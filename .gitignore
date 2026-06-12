@@ -6,6 +6,10 @@ __pycache__/
 venv/
 env/
 
+# Internal docs
+Xeno Engineering Internship Assignment - 2026.pdf
+PulseAI_Complete_Build_Spec.md
+
 # Build output
 dist/
 build/
