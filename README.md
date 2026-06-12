@@ -100,28 +100,17 @@ JWT_SECRET=your_secret_key
 GROQ_API_KEY=your_groq_key
 CHANNEL_SIMULATOR_URL=http://localhost:5001
 ```
+## 🚀 Live Demo
 
-## Deployment Notes
-
-For production deployment:
-- use PostgreSQL instead of SQLite
-- set `debug=False`
-- use environment variables for all secrets
-- deploy frontend on Vercel or Netlify
-- deploy backend on Render, Railway, or similar
-
-## Notes for the Xeno Assignment
-
-This project is structured to demonstrate:
-- AI-native CRM workflows
-- campaign planning and execution logic
-- customer analysis and segmentation
-- a simulated messaging channel instead of a real provider integration
+👉 [Try CRM Application](https://frontend-one-plum-lkkev47bos.vercel.app/login)<br>
+<br>
+Sample mailid :-demo@pulseai.com<br>
+password:-demo123
 
 ## License
 
 This project is for educational and assignment purposes.
 
 ## Author
-
-PulseAI project workspace
+PulseAI Founder
+G.AKHIL BABU
