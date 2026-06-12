@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: pulseai-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: gunicorn run:app --bind 0.0.0.0:$PORT --workers 2
+    plan: free
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:///pulseai.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CHANNEL_SIMULATOR_URL
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+
+  - type: web
+    name: pulseai-simulator
+    runtime: python
+    rootDir: channel-simulator
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2
+    plan: free
+    envVars:
+      - key: CRM_URL
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.0"

@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+flask-cors
+flask-migrate
+python-dotenv
+pyjwt
+werkzeug
+groq
+requests
+gunicorn
