@@ -9,10 +9,10 @@ import useCampaignStore from '../../store/campaignStore';
 import AnimatedCounter from '../../components/ui/AnimatedCounter';
 
 const goalSuggestions = [
-  { text: 'Bring back inactive customers', emoji: '🔥' },
-  { text: 'Reward loyal customers', emoji: '⭐' },
-  { text: 'Promote new collection', emoji: '✨' },
-  { text: 'Drive repeat purchases', emoji: '🔄' },
+  'Bring back inactive customers',
+  'Reward loyal customers',
+  'Promote new collection',
+  'Drive repeat purchases',
 ];
 
 export default function CampaignPlanner() {
@@ -122,11 +122,11 @@ export default function CampaignPlanner() {
               <textarea value={goal} onChange={e => setGoal(e.target.value)} rows={3}
                 className="input-field resize-none text-base" placeholder="e.g. Bring back customers who haven't purchased in 60+ days with a special discount" />
               <div className="flex flex-wrap gap-2 mt-3">
-                {goalSuggestions.map(s => (
-                  <motion.button key={s.text} onClick={() => setGoal(s.text)}
+                {goalSuggestions.map((text) => (
+                  <motion.button key={text} onClick={() => setGoal(text)}
                     whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}
                     className="chip text-xs">
-                    <span>{s.emoji}</span> {s.text}
+                    {text}
                   </motion.button>
                 ))}
               </div>
@@ -327,7 +327,7 @@ export default function CampaignPlanner() {
                 <Rocket size={36} className="text-emerald-500" />
               </motion.div>
             </motion.div>
-            <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Campaign Launched! 🚀</h3>
+            <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Campaign Launched</h3>
             <p className="text-slate-500">Redirecting to campaign analytics...</p>
             <motion.div className="w-32 h-1 bg-slate-100 rounded-full mx-auto mt-6 overflow-hidden">
               <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: ['0%', '100%'] }} transition={{ duration: 2 }} />

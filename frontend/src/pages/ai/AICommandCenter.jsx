@@ -5,10 +5,10 @@ import { Send, Sparkles, BookOpen, Bot, User, ArrowRight, Zap, Brain, BarChart2,
 import { aiAPI } from '../../api/ai';
 
 const starters = [
-  { text: 'Bring back inactive customers', icon: '🔥', desc: 'Re-engage churning users' },
-  { text: 'Increase repeat purchases', icon: '🔄', desc: 'Boost customer lifetime value' },
-  { text: 'Promote summer collection', icon: '☀️', desc: 'Seasonal campaign strategy' },
-  { text: 'Reward my top customers', icon: '⭐', desc: 'VIP loyalty campaign' },
+  { text: 'Bring back inactive customers', desc: 'Re-engage churning users' },
+  { text: 'Increase repeat purchases', desc: 'Boost customer lifetime value' },
+  { text: 'Promote summer collection', desc: 'Seasonal campaign strategy' },
+  { text: 'Reward my top customers', desc: 'VIP loyalty campaign' },
 ];
 
 // Render markdown-like bold text
@@ -232,10 +232,10 @@ export default function AICommandCenter() {
                       <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Campaign Created</span>
                     </div>
                     <p className="text-sm font-semibold text-slate-800 mb-1">{msg.campaign.name}</p>
-                    <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
-                      <span>📨 {(msg.campaign.channel || 'email').toUpperCase()}</span>
-                      <span>👥 {msg.campaign.predicted_reach || 0} reach</span>
-                      <span>💰 ₹{(msg.campaign.predicted_revenue || 0).toLocaleString('en-IN')}</span>
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 mb-3">
+                      <span className="rounded-full bg-white/80 px-2.5 py-1 border border-slate-200">Channel: {(msg.campaign.channel || 'email').toUpperCase()}</span>
+                      <span className="rounded-full bg-white/80 px-2.5 py-1 border border-slate-200">Reach: {msg.campaign.predicted_reach || 0}</span>
+                      <span className="rounded-full bg-white/80 px-2.5 py-1 border border-slate-200">Revenue: ₹{(msg.campaign.predicted_revenue || 0).toLocaleString('en-IN')}</span>
                     </div>
                     <motion.button
                       whileHover={{ scale: 1.02 }}

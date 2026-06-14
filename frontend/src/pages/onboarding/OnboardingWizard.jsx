@@ -291,7 +291,7 @@ export default function OnboardingWizard() {
                 <Sparkles size={36} className="text-white" />
               </motion.div>
 
-              <h2 className="text-3xl font-display font-bold text-slate-900 mb-3">Welcome to PulseAI! 🎉</h2>
+              <h2 className="text-3xl font-display font-bold text-slate-900 mb-3">Welcome to PulseAI</h2>
               <p className="text-slate-500 text-lg mb-2">Let's set up your marketing command center.</p>
               <p className="text-sm text-slate-400 mb-8 max-w-md mx-auto">
                 Import your customer and order data to unlock AI-powered campaigns, smart segments, and deep analytics.
@@ -299,9 +299,9 @@ export default function OnboardingWizard() {
 
               <div className="grid grid-cols-3 gap-4 mb-8 max-w-sm mx-auto">
                 {[
-                  { icon: '📊', label: 'AI Analytics' },
-                  { icon: '🎯', label: 'Smart Segments' },
-                  { icon: '🚀', label: 'Auto Campaigns' },
+                  { label: 'AI Analytics' },
+                  { label: 'Smart Segments' },
+                  { label: 'Auto Campaigns' },
                 ].map((f, i) => (
                   <motion.div
                     key={f.label}
@@ -310,7 +310,7 @@ export default function OnboardingWizard() {
                     transition={{ delay: 0.3 + i * 0.1 }}
                     className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-center"
                   >
-                    <span className="text-2xl">{f.icon}</span>
+                    <span className="h-2.5 w-2.5 rounded-full bg-primary-400" />
                     <p className="text-[10px] font-semibold text-slate-500 mt-1">{f.label}</p>
                   </motion.div>
                 ))}
@@ -472,7 +472,7 @@ export default function OnboardingWizard() {
                 <Rocket size={36} className="text-emerald-500" />
               </motion.div>
 
-              <h2 className="text-2xl font-display font-bold text-slate-900 mb-2">You're All Set! 🚀</h2>
+              <h2 className="text-2xl font-display font-bold text-slate-900 mb-2">You're All Set</h2>
               <p className="text-slate-500 mb-6">Your data has been imported successfully.</p>
 
               {importResult && (

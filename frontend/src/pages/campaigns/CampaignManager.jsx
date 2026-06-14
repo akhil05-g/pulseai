@@ -160,8 +160,10 @@ export default function CampaignManager() {
           <motion.div
             animate={{ y: [0, -6, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="text-4xl mb-4"
-          >📬</motion.div>
+            className="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 mx-auto mb-4 flex items-center justify-center text-slate-400 text-xs font-semibold"
+          >
+            0
+          </motion.div>
           <p className="text-slate-400 mb-4">No campaigns found</p>
           <button onClick={() => navigate('/campaigns/new')} className="btn-primary"><Plus size={16} /> Create your first campaign</button>
         </motion.div>

@@ -36,12 +36,18 @@ export default function Dashboard() {
     ]).finally(() => setLoading(false));
   }, []);
 
+  const totalCustomers = Number(stats?.total_customers ?? 0);
+  const atRiskCustomers = Number(stats?.at_risk ?? 0);
+  const totalRevenue = Number(stats?.total_revenue ?? 0);
+  const activeCustomers = Number(stats?.active_customers ?? 0);
+  const totalCampaigns = Number(stats?.total_campaigns ?? 0);
+
   const statCards = [
-    { label: 'Total Customers', rawValue: stats.total_customers || 0, icon: Users, iconBg: 'bg-primary-500/10', iconColor: 'text-primary-500', glowColor: '#6366F1', trend: '+12%' },
-    { label: 'Total Revenue', rawValue: stats.total_revenue || 0, prefix: '₹', icon: IndianRupee, iconBg: 'bg-emerald-500/10', iconColor: 'text-emerald-500', glowColor: '#10B981', trend: '+8.5%' },
-    { label: 'Active (30d)', rawValue: stats.active_customers || 0, icon: Activity, iconBg: 'bg-cyan-500/10', iconColor: 'text-cyan-500', glowColor: '#06B6D4' },
-    { label: 'At-Risk', rawValue: stats.at_risk || 0, icon: AlertTriangle, iconBg: 'bg-red-500/10', iconColor: 'text-red-500', glowColor: '#EF4444' },
-    { label: 'Campaigns', rawValue: stats.total_campaigns || 0, icon: Megaphone, iconBg: 'bg-violet-500/10', iconColor: 'text-violet-500', glowColor: '#8B5CF6' },
+    { label: 'Total Customers', rawValue: totalCustomers, icon: Users, iconBg: 'bg-primary-500/10', iconColor: 'text-primary-500', glowColor: '#6366F1', trend: '+12%' },
+    { label: 'Total Revenue', rawValue: totalRevenue, prefix: '₹', icon: IndianRupee, iconBg: 'bg-emerald-500/10', iconColor: 'text-emerald-500', glowColor: '#10B981', trend: '+8.5%' },
+    { label: 'Active (30d)', rawValue: activeCustomers, icon: Activity, iconBg: 'bg-cyan-500/10', iconColor: 'text-cyan-500', glowColor: '#06B6D4' },
+    { label: 'At-Risk', rawValue: atRiskCustomers, icon: AlertTriangle, iconBg: 'bg-red-500/10', iconColor: 'text-red-500', glowColor: '#EF4444' },
+    { label: 'Campaigns', rawValue: totalCampaigns, icon: Megaphone, iconBg: 'bg-violet-500/10', iconColor: 'text-violet-500', glowColor: '#8B5CF6' },
   ];
 
   const oppColorMap = {
@@ -104,7 +110,7 @@ export default function Dashboard() {
               transition={{ delay: 0.3 }}
               className="text-3xl font-display font-extrabold text-white mb-3 leading-tight"
             >
-              Welcome back! 👋<br />
+              Welcome back.<br />
               <span className="bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 bg-clip-text text-transparent bg-[length:200%] animate-[gradientSlide_3s_linear_infinite]">
                 Your marketing command center
               </span>
@@ -116,8 +122,16 @@ export default function Dashboard() {
               transition={{ delay: 0.4 }}
               className="text-slate-400 text-sm mb-6 leading-relaxed"
             >
-              PulseAI has analyzed <span className="text-white font-semibold">{formatNumber(stats.total_customers || 50)} customers</span> and found{' '}
-              <span className="text-amber-400 font-semibold">{stats.at_risk || 8} at-risk</span> users. Let's fix that.
+              {totalCustomers > 0 ? (
+                <>
+                  PulseAI has analyzed <span className="text-white font-semibold">{formatNumber(totalCustomers)} customers</span> and found{' '}
+                  <span className="text-amber-400 font-semibold">{atRiskCustomers} at-risk</span> users. Let's fix that.
+                </>
+              ) : (
+                <>
+                  PulseAI is ready to analyze your seeded customer data. Once you add customers and activity, these insights will update automatically.
+                </>
+              )}
             </motion.p>
 
             {/* Quick stat pills */}
@@ -128,16 +142,16 @@ export default function Dashboard() {
               className="flex gap-3 mb-6"
             >
               {[
-                { label: 'Open Rate', value: '82%', icon: '📬' },
-                { label: 'CTR', value: '45%', icon: '🖱️' },
-                { label: 'Revenue', value: formatCurrency(stats.total_revenue || 0), icon: '💰' },
+                { label: 'Open Rate', value: '82%' },
+                { label: 'CTR', value: '45%' },
+                { label: 'Revenue', value: formatCurrency(totalRevenue) },
               ].map((pill, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.05, y: -2 }}
                   className="flex items-center gap-2 bg-white/[0.06] backdrop-blur-sm border border-white/[0.08] rounded-xl px-4 py-2.5"
                 >
-                  <span className="text-sm">{pill.icon}</span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-primary-400/80" />
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">{pill.label}</p>
                     <p className="text-sm font-mono font-bold text-white">{pill.value}</p>

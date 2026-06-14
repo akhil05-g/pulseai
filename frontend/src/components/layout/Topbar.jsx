@@ -26,12 +26,12 @@ const pageDescriptions = {
 };
 
 const searchSuggestions = [
-  { label: 'Go to AI Command', path: '/ai', icon: '🤖' },
-  { label: 'Create Campaign', path: '/campaigns/new', icon: '🚀' },
-  { label: 'View Customers', path: '/customers', icon: '👥' },
-  { label: 'Analytics Dashboard', path: '/analytics', icon: '📊' },
-  { label: 'Segment Builder', path: '/segments', icon: '🎯' },
-  { label: 'Order History', path: '/orders', icon: '📦' },
+  { label: 'Go to AI Command', path: '/ai', badge: 'AI' },
+  { label: 'Create Campaign', path: '/campaigns/new', badge: 'CP' },
+  { label: 'View Customers', path: '/customers', badge: 'CU' },
+  { label: 'Analytics Dashboard', path: '/analytics', badge: 'AN' },
+  { label: 'Segment Builder', path: '/segments', badge: 'SG' },
+  { label: 'Order History', path: '/orders', badge: 'OR' },
 ];
 
 export default function Topbar() {
@@ -216,7 +216,7 @@ export default function Topbar() {
                       style={{ background: 'transparent' }}
                       whileHover={{ backgroundColor: 'rgba(99,102,241,0.06)' }}
                     >
-                      <span className="text-lg">{item.icon}</span>
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">{item.badge}</span>
                       <span className="text-sm font-medium text-slate-700 group-hover:text-primary-600 transition-colors">{item.label}</span>
                       <span className="ml-auto text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Enter ↵</span>
                     </motion.button>

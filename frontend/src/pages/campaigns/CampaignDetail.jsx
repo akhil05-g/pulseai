@@ -111,7 +111,7 @@ export default function CampaignDetail() {
               >
                 <Rocket size={36} className="text-emerald-500" />
               </motion.div>
-              <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Campaign Launched! 🚀</h3>
+              <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Campaign Launched</h3>
               <p className="text-slate-500 text-sm">Messages are being sent to customers now...</p>
               <motion.div className="w-40 h-1.5 bg-slate-100 rounded-full mx-auto mt-5 overflow-hidden">
                 <motion.div className="h-full bg-emerald-500 rounded-full" animate={{ width: ['0%', '100%'] }} transition={{ duration: 2 }} />
@@ -194,12 +194,12 @@ export default function CampaignDetail() {
       {campaign.status === 'draft' && (
         <div className="grid grid-cols-3 gap-4 mb-6">
           {[
-            { label: 'Predicted Reach', value: formatNumber(campaign.predicted_reach || 0), icon: '👥' },
-            { label: 'Predicted Open Rate', value: formatPercent(campaign.predicted_open_rate || 0), icon: '📬' },
-            { label: 'Predicted Revenue', value: formatCurrency(campaign.predicted_revenue || 0), icon: '💰' },
+            { label: 'Predicted Reach', value: formatNumber(campaign.predicted_reach || 0), badge: 'Reach' },
+            { label: 'Predicted Open Rate', value: formatPercent(campaign.predicted_open_rate || 0), badge: 'Open' },
+            { label: 'Predicted Revenue', value: formatCurrency(campaign.predicted_revenue || 0), badge: 'Revenue' },
           ].map((m, i) => (
             <motion.div key={i} className="card p-5 text-center" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
-              <span className="text-2xl">{m.icon}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">{m.badge}</span>
               <p className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider mt-2">{m.label}</p>
               <p className="stat-number text-xl mt-1">{m.value}</p>
             </motion.div>

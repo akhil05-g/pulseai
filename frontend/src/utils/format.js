@@ -77,10 +77,10 @@ export function getStatusColor(status) {
 
 export function getChannelIcon(channel) {
   switch (channel) {
-    case 'whatsapp': return '💬';
-    case 'email': return '📧';
-    case 'sms': return '📱';
-    case 'rcs': return '🚀';
-    default: return '📨';
+    case 'whatsapp': return 'WhatsApp';
+    case 'email': return 'Email';
+    case 'sms': return 'SMS';
+    case 'rcs': return 'RCS';
+    default: return 'Message';
   }
 }
